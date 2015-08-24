@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Fake Data for Fake Products for Fake Plant Nursery for Homework Assignment
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css"/>
+        <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <script>    
+function confirmDelete() {
+    if (confirm("Are you sure?")) {
+        alert("Delete");
+    }
+    return false;
+}
+</script>
+    </head>
+    <body>
+        <div class="page-header">
+            <h2>Products</h2>
+        </div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>111</td>
+                    <td>Garden Spade</td>
+                    <td>5</td>
+                    <td>$20</td>
+                    <td><a href="product.html">Edit</a></td>
+                    <td><a href="#" onClick="confirmDelete">Delete</a></td>
+                </tr>
+                <tr>
+                    <td>222</td>
+                    <td>Tomato seed packet</td>
+                    <td>20</td>
+                    <td>$0.75</td>
+                    <td><a href="product.html">Edit</a></td>
+                    <td><a href="#">Delete</a></td>
+                </tr>
+                <tr>
+                    <td>333</td>
+                    <td>Pitchfork</td>
+                    <td>3</td>
+                    <td>$45</td>
+                    <td><a href="product.html">Edit</a></td>
+                    <td><a href="#">Delete</a></td>
+                </tr>
+                <tr>
+                    <td>444</td>
+                    <td>Machete</td>
+                    <td>3</td>
+                    <td>$35</td>
+                    <td><a href="product.html">Edit</a></td>
+                    <td><a href="#">Delete</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>
