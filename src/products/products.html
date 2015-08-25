@@ -1,24 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Fake Data for Fake Products for Fake Plant Nursery for Homework Assignment
-        </title>
+        <title>Fake Data for Fake Products for Fake Plant Nursery for Homework Assignment</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css"/>
+        <script src="bower_components/jquery/dist/jquery.js"></script>
         <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script type="text/javascript">
-            $('.confirmation').on('click', function () {
-                return confirm('Are you sure?');
-                return alert('Delete');
-            });
-        </script>
+        <script src="/products.js"></script>
     </head>
     <body>
         <div class="page-header">
             <h2>Products</h2>
         </div>
-        <table class="table table-hover">
+        <table class="products table table-hover">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -34,7 +28,7 @@
                     <td>5</td>
                     <td>$20</td>
                     <td><a href="product.html">Edit</a></td>
-                    <td><a  href="product.html" class="confirmation">Delete</a></td>
+                    <td><a  href="#">Delete</a></td>
                 </tr>
                 <tr>
                     <td>222</td>
