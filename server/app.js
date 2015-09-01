@@ -5,9 +5,21 @@ var app = express();
 // Default NODE_ENV to "development".
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
+// Initialize view engine.
+app.engine('hbs', exphbs({
+	extname: '.hbs',
+	layoutsDir: __dirname + '/../src/app/views/layouts',
+	defaultLayout: 'main'
+}));
+app.set('view engine', 'hbs');
+app.set('views', __dirname + '/../src/app/views');
+
 if (process.env.NODE_ENV == 'production') {
     app.enable('view cache');
 }
+
+// Set the static files location.
+app.use(express.static(__dirname + '/../src'));
 
 // Initialize routes.
 router.map(app);

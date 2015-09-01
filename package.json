@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/sanskrtapanditah/Exercises#readme",
   "dependencies": {
-    "express": "^4.13.3"
+    "express": "^4.13.3",
+    "express-handlebars": "^2.0.1",
+    "handlebars": "^3.0.3"
   }
 }
