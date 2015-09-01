@@ -1,4 +1,4 @@
-var main = require('./dashboard/routes');
+var dashboard = require('./dashboard/routes');
 var products = require('./products/routes');
 
 module.exports.map = function(app) {
