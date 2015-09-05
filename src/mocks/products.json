@@ -1,0 +1,25 @@
+{
+	"_id": "1",
+	"name": "Garden Spade",
+	"quantity": 5,
+	"price": 20,
+	"description": "Description of Garden Spade here."
+},{
+	"_id": "2",
+	"name": "Tomato Seed Packet",
+	"quantity": 20,
+	"price": 0.75,
+	"description": "Description of Tomato Seed Packet here."
+},{
+	"_id": "3",
+	"name": "Pitchfork",
+	"quantity": 3,
+	"price": 45,
+	"description": "Description of Pitchfork here."
+},{
+	"_id": "4",
+	"name": "Machete",
+	"quantity": 3,
+	"price": 35,
+	"description": "Description of Machete here."
+}
