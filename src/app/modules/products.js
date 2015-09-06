@@ -1,12 +1,13 @@
 $(document).ready(function() {
     // Get data for products from /mocks/products.json via AJAX
-    $.get('/mocks/products.json', funtion(response) {
-        //Populate the "products" table's tbody element with tr elements based on the response data array.
-        var table = $('#products tbody');
-            $.each(data, function(idx, elem){
-                table.append("<tr><td>"+elem._id+"</td><td>"+elem.name+"</td><td>"+elem.quantity+"</td><td>"+elem.price+"</td><td>"+elem.description+"</td></tr>");
-            });
+    $.get('/mocks/products.json', function(response) {
+        // Populate the 'products' table's tbody elementent with tr elementents based on the response data array.
+        var tableBody = $('#products tbody');
+    $.each(response, function(index, element){
+        tableBody.append('<tr><td>' + element._id + '</td><td>' + element.name + '</td><td>' + element.quantity + '</td><td>' + element.price + '</td></tr>');
+        });
     });               
+    
     $('#products').on('click', '.delete', function(event) {
         event.preventDefault();
 
