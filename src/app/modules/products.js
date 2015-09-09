@@ -13,7 +13,7 @@ $(document).ready(function() {
             	'<td><a href="/products/1">Edit</a></td>' +
             	'<td><a class="delete" href="#">Delete</a></td>' +
             	'</tr>'
-        	);
+            );
         });
     });               
     
