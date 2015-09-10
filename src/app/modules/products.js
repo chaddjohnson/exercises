@@ -1,24 +1,16 @@
 $(document).ready(function() {
-    // Get data for products from /mocks/products.json via AJAX
+    // Get data for products.
     $.get('/mocks/products.json', function(response) {
-        var tableBody = $('#products tbody');
+        var templateFn = Handlebars.getTemplate('products/list.hbs');
+        var templateData = {
+            products: response
+        };
 
-        $.each(response, function(index, element) {
-            tableBody.append(
-            	'<tr>' + 
-            	'<td>' + element._id + '</td>' +
-            	'<td>' + element.name + '</td>' +
-            	'<td>' + element.quantity + '</td>' +
-            	'<td>' + element.price + '</td>' +
-            	'<td><a href="/products/1">Edit</a></td>' +
-            	'<td><a class="delete" href="#">Delete</a></td>' +
-            	'</tr>'
-            );
-        });
-    });               
+        $('main').html(templateFn(templateData));
+    });        
     
     $('#products').on('click', '.delete', function(event) {
-        event.preventDefault();
+        event.preventDefault(); 
 
         if (confirm('Are you sure you want to delete this product?')) {
             alert('deleting product');

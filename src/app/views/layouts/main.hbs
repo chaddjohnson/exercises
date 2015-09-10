@@ -6,11 +6,29 @@
         <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css"/>
         <script src="/bower_components/jquery/dist/jquery.js"></script>
         <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
-
+        <script src="/bower_components/handlebars/handlebars.js"></script>
+        <script>
+            // Source: http://berniz.com/post/24743062344/handling-handlebarsjs-like-a-pro
+            Handlebars.getTemplate = function(name) {
+                if (Handlebars.templates === undefined || Handlebars.templates[name] === undefined) {
+                    $.ajax({
+                        url : '/app/templates/' + name,
+                        success: function(data) {
+                            if (Handlebars.templates === undefined) {
+                                Handlebars.templates = {};
+                            }
+                            Handlebars.templates[name] = Handlebars.compile(data);
+                        },
+                        async: false
+                    });
+                }
+                return Handlebars.templates[name];
+            };
+        </script>                      
     </head>
     <body>
         <nav class="navbar navbar-default">
-            <div class-"container-fluid">
+            <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
                     <a class="navbar-brand" href="/">Johnson's Nordic Plant Nursery</a>
