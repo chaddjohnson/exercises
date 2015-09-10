@@ -9,7 +9,7 @@ $(document).ready(function() {
         $('main').html(templateFn(templateData));
     });        
     // Option for deleting products.
-    $('#products').on('click', '.delete', function(event) {
+    $(document).on('click', '#products .delete', function(event) {
         event.preventDefault(); 
 
         if (confirm('Are you sure you want to delete this product?')) {
