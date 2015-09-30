@@ -4,7 +4,7 @@ $(document).ready(function() {
     var productId = url.substring(url.lastIndexOf('/') +1);
 
     //Get data for the product.
-    $.get('/mocks/products/' + productId + '.json', function(response) {
+    $.get('http://localhost:4000/products/' + productId, function(response) {
         var templateFn = Handlebars.getTemplate('products/edit.hbs');
         var templateData = response;
 

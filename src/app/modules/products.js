@@ -1,6 +1,6 @@
 $(document).ready(function() {
     // Get data for products.
-    $.get('/mocks/products.json', function(response) {
+    $.get('http://localhost:4000/products', function(response) {
         var templateFn = Handlebars.getTemplate('products/list.hbs');
         var templateData = {
             products: response
