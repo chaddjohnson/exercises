@@ -1,7 +1,7 @@
 {
-	"_id": "3",
-	"name": "Pitchfork",
-	"quantity": 3,
-	"price": 45,
-	"description": "Description of Pitchfork here."
+    "_id": "3",
+    "name": "Pitchfork",
+    "quantity": 3,
+    "price": 45,
+    "description": "Description of Pitchfork here."
 }
