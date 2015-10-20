@@ -15,11 +15,15 @@ $(document).ready(function() {
         e.preventDefault();
         $.ajax({
             type: "PUT",
-            url: "src/app/templates/products/edit.hbs",
-            data: ".json" + val,
-            success: function() {
-                $("").val("");
-            }
+            url: "http://localhost:4000/products/" + productId,
+            contentType: 'application/json',
+            data: {
+               name: $('#productForm [name=name]'),
+               quantity: $('#productForm [name=quantity]'),
+               price: $('#productForm [name=price]'),
+               description: $('#productForm [name=description]'),
+            },
+            success: function() {}
         });
     });
 });
