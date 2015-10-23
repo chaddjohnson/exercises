@@ -11,18 +11,18 @@ $(document).ready(function() {
         $('main').html(templateFn(templateData));        
     });
     // Put data for the product.
-    $("productForm").submit(function(e) {
-        e.preventDefault();
+    $(document).on('submit', 'productForm', function(event) {
+        event.preventDefault();
         $.ajax({
             type: "PUT",
             url: "http://localhost:4000/products/" + productId,
             contentType: 'application/json',
-            data: {
-               name: $('#productForm [name=name]'),
-               quantity: $('#productForm [name=quantity]'),
-               price: $('#productForm [name=price]'),
-               description: $('#productForm [name=description]'),
-            },
+            data: JSON.stringify({
+               name: $('#productForm [name=name]').val(),
+               quantity: parseInt($('#productForm [name=quantity]').val()),
+               price: parseFloat($('#productForm [name=price]').val()),
+               description: $('#productForm [name=description]').val(),
+            }),
             success: function() {}
         });
     });
