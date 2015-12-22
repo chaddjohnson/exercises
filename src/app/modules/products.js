@@ -5,9 +5,9 @@ $(document).ready(function() {
         var templateData = {
             products: response
         };
-
         $('main').html(templateFn(templateData));
-    });        
+    });
+
     // Option for deleting products.
     $(document).on('click', '#products .delete', function(event) {
         event.preventDefault(); 

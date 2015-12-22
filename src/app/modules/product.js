@@ -10,9 +10,11 @@ $(document).ready(function() {
 
         $('main').html(templateFn(templateData));        
     });
+    
     // Put data for the product.
-    $(document).on('submit', 'productForm', function(event) {
+    $(document).on('submit', '#productForm', function(event) {
         event.preventDefault();
+        debugger;
         $.ajax({
             type: "PUT",
             url: "http://localhost:4000/products/" + productId,
