@@ -14,10 +14,10 @@ $(document).ready(function() {
     // Put data for the product.
     $(document).on('submit', '#productForm', function(event) {
         event.preventDefault();
-        debugger;
+
         $.ajax({
-            type: "PUT",
-            url: "http://localhost:4000/products/" + productId,
+            type: 'PUT',
+            url: 'http://localhost:4000/products/' + productId,
             contentType: 'application/json',
             data: JSON.stringify({
                name: $('#productForm [name=name]').val(),
@@ -25,7 +25,10 @@ $(document).ready(function() {
                price: parseFloat($('#productForm [name=price]').val()),
                description: $('#productForm [name=description]').val(),
             }),
-            success: function() {}
+            success: function() {
+                // Product saved successfully, so redirect back to the Products page.
+                window.location = '/products';
+            }
         });
     });
 });
