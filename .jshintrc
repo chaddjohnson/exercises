@@ -1,0 +1,9 @@
+{
+	"globals": {
+	    "$": true,
+	    "jQuery": true,
+	    "Handlebars": true,
+	    "document": true,
+	    "window": true
+	}
+}
