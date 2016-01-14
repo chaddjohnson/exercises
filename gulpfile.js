@@ -11,6 +11,7 @@ var livereload = require('gulp-livereload');
 var path = require('path');
 var jshint = require('gulp-jshint');
 var runSequence = require('run-sequence');
+var nodemon = require('gulp-nodemon');
 
 // Default NODE_ENV to "development".
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
@@ -41,7 +42,7 @@ function handleError(error) {
 }
 
 gulp.task('clean', function() {
-    return gulp.src(path.build)
+    return gulp.src(paths.build)
         .pipe(clean());
 });
 
@@ -59,7 +60,7 @@ gulp.task('copy:css', function() {
 
 // TEMPORARY This is temporary until we start using Backbone
 gulp.task('copy:templates', function() {
-    return gulp.src('src/app/**/*.hbs,' {base: './src'})
+    return gulp.src('src/app/**/*.hbs', {base: './src'})
         .pipe(gulp.dest(paths.build));
 });
 
@@ -102,7 +103,6 @@ gulp.task('jshint', function() {
 	    	quotmark: 'single',
 	    	undef: true,
 	    	unused: 'vars',
-	    	strict: true,
 	    	sub: true,
 	    	evil: true
 	    }))
@@ -111,7 +111,13 @@ gulp.task('jshint', function() {
 
 // Runs the server
 gulp.task('server', function() {
-	require('./server/app');
+	nodemon({
+		script: './server/app.js',
+		ext: 'js',
+		env: {'NODE_ENV': process.env.NODE_ENV || 'development'}
+	}).on('restart', function() {
+		console.log('Server restarted.');
+	});
 });
 
 // Watches for changes to files and rebuilds when changes occur.

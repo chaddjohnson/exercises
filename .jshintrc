@@ -4,6 +4,8 @@
 	    "jQuery": true,
 	    "Handlebars": true,
 	    "document": true,
-	    "window": true
+	    "window": true,
+	    "confirm": true,
+	    "alert": true
 	}
 }
