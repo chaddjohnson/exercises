@@ -5,6 +5,7 @@
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 var clean = require('gulp-clean');
+var less = require('gulp-less');
 var concat = require('gulp-concat');
 var watch = require('gulp-watch');
 var livereload = require('gulp-livereload');
@@ -17,11 +18,11 @@ var nodemon = require('gulp-nodemon');
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 var paths = {
-	build: 'dist',
+	dist: 'dist',
 	src: {
-		css: [
-            'bower_components/bootstrap/dist/css/bootstrap.css',
-            'src/css/app.css'
+		less: [
+            'bower_components/bootstrap/less/bootstrap.less',
+            'src/less/app.less'
 		],
 		vendor: [
             'bower_components/jquery/dist/jquery.js',
@@ -42,14 +43,14 @@ function handleError(error) {
 }
 
 gulp.task('clean', function() {
-    return gulp.src(paths.build)
+    return gulp.src(paths.dist)
         .pipe(clean());
 });
 
-// Copies the main HTML file to the build directory.
+// Copies the main HTML file to the dist directory.
 gulp.task('copy:html', function() {
     return gulp.src(paths.src.html)
-        .pipe(gulp.dest(paths.build));
+        .pipe(gulp.dest(paths.dist));
 });
 
 gulp.task('copy:css', function() {
@@ -65,25 +66,33 @@ gulp.task('copy:templates', function() {
 });
 
 // Shortcut to run all copying tasks in one shot.
-gulp.task('copy', ['copy:html', 'copy:css', 'copy:templates']);
+gulp.task('copy', ['copy:html', 'copy:templates']);
+gulp.task('less', function() {
+	return gulp.src(paths.src.less)
+	    .pipe(concat('app.css')).on('error, handleError')
+	    .pipe(less({
+	    	paths: ['src', 'bower_components', 'bower_components/bootstrap/less']
+	    }).on('error', handleError))
+	    .pipe(gulp.dest(paths.dist));
+});
 
 // Builds all third-party JS libraries into one file.
 gulp.task('concat:vendor', function() {
 	return gulp.src(paths.src.vendor)
 	    .pipe(concat('vendor.js')).on('error', handleError)
-	    .pipe(gulp.dest(paths.build));
+	    .pipe(gulp.dest(paths.dist));
 });
 
 // Builds all app-specific JS files into one file.
 gulp.task('concat:app', function() {
 	// return gulp.src(paths.src.app)
 	//     .pipe(concat('app.js')).on('error', handleError)
-	//     .pipe(gulp.dest(paths.build));
+	//     .pipe(gulp.dest(paths.dist));
 
 	// TEMPORARY: For now, we will just copy files. Later we will uncomment what's above
 	// and use that instead.
     return gulp.src(paths.src.app, {base: './src'})
-        .pipe(gulp.dest(paths.build));
+        .pipe(gulp.dest(paths.dist));
 });
 
 // Shortcut to run all concatenation tasks in one shot.
@@ -133,6 +142,9 @@ gulp.task('watch', function() {
 	// Watch for changes to the HTML file.
 	gulp.watch(paths.src.html, ['copy:html']);
 
+	// Watch for changes to the LESS files.
+	gulp.watch(paths.src.less, ['less']);
+
 	// Reload the browser whenever anything is rebuilt.
 	gulp.watch('dist/**/*', function() {
 		setTimeout(livereload.changed, 250);
@@ -141,7 +153,7 @@ gulp.task('watch', function() {
 
 // Shortcut to run several tasks when building the application.
 gulp.task('build', function(done) {
-	runSequence('jshint', 'clean', 'copy', 'concat', done);
+	runSequence('jshint', 'clean', 'copy', 'less', 'concat', done);
 });
 
 // The default task that will run when "gulp" is run.
