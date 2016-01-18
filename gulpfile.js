@@ -56,20 +56,20 @@ gulp.task('copy:html', function() {
 gulp.task('copy:css', function() {
 	return gulp.src(paths.src.css)
 	    .pipe(concat('app.css')).on('error', handleError)
-	    .pipe(gulp.dest(paths.build));
+	    .pipe(gulp.dest(paths.dist));
 });
 
 // TEMPORARY This is temporary until we start using Backbone
 gulp.task('copy:templates', function() {
     return gulp.src('src/app/**/*.hbs', {base: './src'})
-        .pipe(gulp.dest(paths.build));
+        .pipe(gulp.dest(paths.dist));
 });
 
 // Shortcut to run all copying tasks in one shot.
 gulp.task('copy', ['copy:html', 'copy:templates']);
 gulp.task('less', function() {
 	return gulp.src(paths.src.less)
-	    .pipe(concat('app.css')).on('error, handleError')
+	    .pipe(concat('app.css')).on('error', handleError)
 	    .pipe(less({
 	    	paths: ['src', 'bower_components', 'bower_components/bootstrap/less']
 	    }).on('error', handleError))
