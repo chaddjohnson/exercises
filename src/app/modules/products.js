@@ -12,8 +12,21 @@ $(document).ready(function() {
     $(document).on('click', '#products .delete', function(event) {
         event.preventDefault(); 
 
-        if (confirm('Are you sure you want to delete this product?')) {
-            alert('deleting product');
-        }
+        $.ajax({
+            type: 'DELETE',
+            url: 'http://localhost:3000/products/:id' + productId,
+            contentType: 'application/json',
+            data: JSON.stringify({
+               name: $('#productForm [name=name]').val(),
+               id: $(this).closest('tr').data('product-id'),
+               quantity: parseInt($('#productForm [name=quantity]').val()),
+               price: parseFloat($('#productForm [name=price]').val()),
+               description: $('#productForm [name=description]').val(),
+            }),
+            success: function() {
+                // Product saved successfully, so redirect back to the Products page.
+                window.location = '/products';
+            }
+        });
     });
 });

@@ -1,4 +1,4 @@
-<div class="page-header">
+d<div class="page-header">
     <h2>Products</h2>
 </div>
 <table id="products" class="table table-hover">
@@ -13,7 +13,7 @@
     </thead>
     <tbody>
         {{#each products}}
-            <tr>
+            <tr data-product-id="{{_id}}">
                 <td>{{name}}</td>
                 <td>{{quantity}}</td>
                 <td>{{price}}</td>
