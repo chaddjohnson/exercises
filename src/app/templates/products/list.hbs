@@ -1,26 +1,36 @@
-d<div class="page-header">
+<div class="page-header">
     <h2>Products</h2>
 </div>
 <table id="products" class="table table-hover">
-	<thead>
-        <tr>
-            <th>Name</th>
-            <th>Quantity</th>
-            <th>Price</th>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        {{#each products}}
-            <tr data-product-id="{{_id}}">
-                <td>{{name}}</td>
-                <td>{{quantity}}</td>
-                <td>{{price}}</td>
-                <td></td>
-                <td><a href="/products/{{_id}}">Edit</a></td>
-                <td><a class="delete" href="#">Delete</a></td>
+{{#if products.length}}
+    <!-- There are products, so show them. -->
+
+    <h4><a href="/products/new">New Products</a></h4>
+
+    <table id="products" class="table table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th></th>
+                <th></th>
             </tr>
-        {{/each}}
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            {{#each products}}
+                <tr data-product-id="{{_id}}">
+                    <td>{{name}}</td>
+                    <td>{{quantity}}</td>
+                    <td>{{price}}</td>
+                    <td></td>
+                    <td><a href="/products/{{_id}}">Edit</a></td>
+                    <td><a class="delete" href="#">Delete</a></td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+{{else}}
+    <!-- Show a message when there are no products. -->
+    <p>There are no products. You can create a product <a href="/products/new">here</a>.</p>
+{{/if}}
