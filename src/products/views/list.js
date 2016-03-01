@@ -1,6 +1,6 @@
 'use strict';
 
-var BaseView = require('../base');
+var BaseView = require('../../common/views/base');
 var $ = require('jquery');
 var Backbone = require('backbone');
 var Handlebars = require('handlebars');
@@ -12,7 +12,7 @@ Backbone.$ = $;
 
 module.exports = BaseView.extend({
     className: 'products-view',
-    template: Handlebars.compile(require('../../templates/products/list.html')),
+    template: Handlebars.compile(require('../templates/list.html')),
 
     render: function() {
         var data = this.collection.toJSON();

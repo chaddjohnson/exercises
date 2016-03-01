@@ -10,7 +10,7 @@ require('./templates/*.html', {mode: 'expand'});
 // Pull in references to libaries we need.
 var $ = require('jquery');
 var Backbone = require('backbone');
-var AppRouter = require('./routers/app');
+var AppRouter = require('./common/routers/app');
 
 // Note this is a shortcut for $(document).ready(function() { ... });
 $(function() {

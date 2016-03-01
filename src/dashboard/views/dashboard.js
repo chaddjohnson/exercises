@@ -1,6 +1,6 @@
 'use strict';
 
-var BaseView = require('./base');
+var BaseView = require('../../common/views/base');
 var $ = require('jquery');
 var Backbone = require('backbone');
 var Handlebars = require('handlebars');

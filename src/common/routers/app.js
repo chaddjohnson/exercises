@@ -2,11 +2,11 @@
 
 var Backbone = require('backbone');
 var $ = require('jquery');
-var ProductCollection = require('../collections/product');
-var ProductModel = require('../models/product');
-var DashboardView = require('../views/dashboard');
-var ProductListView = require('../views/products/list');
-var ProductEditView = require('../views/products/edit');
+var ProductCollection = require('../../products/collections/product');
+var ProductModel = require('../../products/models/product');
+var DashboardView = require('../../dashboard/views/dashboard');
+var ProductListView = require('../../products/views/list');
+var ProductEditView = require('../../products/views/edit');
 
 module.exports = Backbone.Router.extend({
     routes: {

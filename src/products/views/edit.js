@@ -1,6 +1,6 @@
 'use strict';
 
-var BaseView = require('../base');
+var BaseView = require('../../common/views/base');
 var $ = require('jquery');
 var Backbone = require('backbone');
 var Handlebars = require('handlebars');
@@ -11,7 +11,7 @@ Backbone.$ = $;
 
 module.exports = BaseView.extend({
     className: 'product-view',
-    template: Handlebars.compile(require('../../templates/products/edit.html')),
+    template: Handlebars.compile(require('../templates/edit.html')),
 
     events: {
         'submit #productForm': 'submit'
