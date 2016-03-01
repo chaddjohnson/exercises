@@ -44,5 +44,5 @@ $(function() {
 
 // Monkey patch to ensure model.toJSON() includes models and collections in attributes.
 Backbone.Model.prototype.toJSON = function() {
-  return JSON.parse(JSON.stringify(this.attributes));
+    return JSON.parse(JSON.stringify(this.attributes));
 };
