@@ -1,0 +1,5 @@
+/**
+ * Import the main style file from vendor packages. The main style file is the one
+ * labeled "style" in package.json for each package referenced here.
+ */
+@import 'bootstrap';

@@ -2,10 +2,10 @@
     <h2>Products</h2>
 </div>
 <table id="products" class="table table-hover">
-{{#if products.length}}
+{{#if this.length}}
     <!-- There are products, so show them. -->
 
-    <h4><a href="/products/new">New Products</a></h4>
+    <h4><a href="/products/new">New Product</a></h4>
 
     <table id="products" class="table table-hover">
         <thead>
@@ -14,21 +14,9 @@
                 <th>Quantity</th>
                 <th>Price</th>
                 <th></th>
-                <th></th>
             </tr>
         </thead>
-        <tbody>
-            {{#each products}}
-                <tr data-product-id="{{_id}}">
-                    <td>{{name}}</td>
-                    <td>{{quantity}}</td>
-                    <td>{{price}}</td>
-                    <td></td>
-                    <td><a href="/products/{{_id}}">Edit</a></td>
-                    <td><a class="delete" href="#">Delete</a></td>
-                </tr>
-            {{/each}}
-        </tbody>
+        <tbody></tbody>
     </table>
 {{else}}
     <!-- Show a message when there are no products. -->
