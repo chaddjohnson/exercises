@@ -127,9 +127,9 @@ gulp.task('css', function() {
                 autoprefixer: {
                     browsers: ['last 2 version', 'safari 5', 'ie 8', 'ie 9']
                 }
-            }),
-            cssnano()
+            })
         ]))
+        .pipe(gulpif(isReleaseBuild, postcss([cssnano()])))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(paths.dist))
         .pipe(livereload());
